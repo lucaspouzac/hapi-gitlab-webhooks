@@ -1,6 +1,6 @@
 # hapi-gitlab-webhooks
 
-Github version here: [node-github-webhook][https://github.com/mhazy/hapi-github-webhooks].
+Github version here: [node-github-webhook](https://github.com/mhazy/hapi-github-webhooks).
 
 
 ## Description
