@@ -19,6 +19,7 @@ The `'gitlabwebhook'` scheme takes the following options:
 ## Version
 
 1.1.X: compatible HAPI 17.x.x
+
 1.0.X: compatible HAPI 16.x.x
 
 ## Usage
