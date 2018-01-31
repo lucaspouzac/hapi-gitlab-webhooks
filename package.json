@@ -11,7 +11,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lpouzac/hapi-gitlab-webhooks.git"
+    "url": "git+ssh://git@github.com/lucaspouzac/hapi-gitlab-webhooks.git"
   },
   "scripts": {
     "compile": "babel --presets es2015 -d dist/ lib/",
@@ -38,9 +38,9 @@
     "mocha": "5.0.0"
   },
   "bugs": {
-    "url": "https://github.com/lpouzac/hapi-gitlab-webhooks/issues"
+    "url": "https://github.com/lucaspouzac/hapi-gitlab-webhooks/issues"
   },
-  "homepage": "https://github.com/lpouzac/hapi-gitlab-webhooks#readme",
+  "homepage": "https://github.com/lucaspouzac/hapi-gitlab-webhooks#readme",
   "directories": {
     "example": "example",
     "lib": "lib",
