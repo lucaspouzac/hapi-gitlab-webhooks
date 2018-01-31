@@ -1,6 +1,6 @@
 {
   "name": "hapi-gitlab-webhooks",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A Hapi plugin for receiving requests from the GitLab webhooks API.",
   "keywords": [
     "hapi",
@@ -28,13 +28,13 @@
     "joi": "13.1.1"
   },
   "peerDependencies": {
-    "hapi": ">=16.x.x"
+    "hapi": ">=17.x.x"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-preset-es2015": "6.24.1",
     "chai": "4.1.2",
-    "hapi": "16.6.2",
+    "hapi": "17.2.0",
     "mocha": "5.0.0"
   },
   "bugs": {

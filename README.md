@@ -16,39 +16,43 @@ An authentication strategy plugin for [hapi](https://github.com/hapijs/hapi) for
 The `'gitlabwebhook'` scheme takes the following options:
 - `secret` - (required) the token configured for the webhook (never share or commit this to your project!)
 
+## Version
+
+1.1.X: compatible HAPI 17.x.x
+1.0.X: compatible HAPI 16.x.x
+
 ## Usage
 ```javascript
 var hapi = require('hapi');
 var gitlabWebhooksPlugin = require('hapi-gitlab-webhooks');
 var token = 'SomeUnsharedSecretToken';
-var server = new hapi.Server();
-
-server.connection({
+var server = new hapi.Server({
     host: host,
     port: port
 });
 
-server.register(gitlabWebhooksPlugin, function (err) {
-  // Register gitlab webhook auth strategy
-  server.auth.strategy('gitlabwebhook', 'gitlabwebhook', { secret: token});
-  // Apply the strategy to the route that handles webhooks
-  server.route([
-    {
-      method: 'POST',
-      path: '/webhooks/gitlab',
-      config: {
-          auth: {
-              strategies: ['gitlabwebhook'],
-              payload: 'required'
-          }
-      },
-      handler: function(request, reply) {
-        // request.payload is the validated payload from Gitlab
-        reply();
-      }
-    }
-  ]);
-});
+try {
+    await server.register(hapiGitlabWebhook)
+} catch (err) {
+    throw err;
+}
+
+// Register gitlab webhook auth strategy
+server.auth.strategy('gitlabwebhook', 'gitlabwebhook', { secret: token });
+// Apply the strategy to the route that handles webhooks
+server.route([
+  {
+    method: 'POST',
+    path: '/webhooks/gitlab',
+    config: {
+        auth: {
+            strategies: ['gitlabwebhook'],
+            payload: 'required'
+        }
+    },
+    handler: () => null
+  }
+]);
 ```
 
 [npm-image]: https://badge.fury.io/js/hapi-gitlab-webhooks.svg

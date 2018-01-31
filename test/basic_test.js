@@ -5,21 +5,21 @@ const secret = 'SuperSecretKey';
 let testServer;
 
 describe('gitlab webhook handler', () => {
-    before(() => {
-        testServer = server.createServer(secret);
+    before(async() => {
+        testServer = await server.createServer(secret);
     });
-    it('should be unauthorized when signature header is missing', (done) => {
+    it('should be unauthorized when signature header is missing', async() => {
         const options = {
             method: "POST",
             url: "/webhooks/gitlab"
         };
-        testServer.inject(options, function(response) {
-            expect(response.statusCode).to.equal(401, 'server responded with 401');
-            expect(response.result.message).to.equal('Invalid signature');
-            done();
-        });
+        const response = await testServer.inject(options);
+
+        expect(response.statusCode).to.equal(401, 'server responded with 401');
+        expect(response.result.message).to.equal('Invalid signature');
+
     });
-    it('should be unauthorized when signature is not valid', (done) => {
+    it('should be unauthorized when signature is not valid', async() => {
         const options = {
             method: "POST",
             url: "/webhooks/gitlab",
@@ -27,13 +27,12 @@ describe('gitlab webhook handler', () => {
                 'X-Gitlab-Token': 'invalid'
             }
         };
-        testServer.inject(options, function(response) {
-            expect(response.statusCode).to.equal(401, 'server responded with 401');
-            expect(response.result.message).to.equal('Invalid signature');
-            done();
-        });
+        const response = await testServer.inject(options);
+
+        expect(response.statusCode).to.equal(401, 'server responded with 401');
+        expect(response.result.message).to.equal('Invalid signature');
     });
-    it('should return a status of 200 if the signature is valid', (done) => {
+    it('should return a status of 200 if the signature is valid', async() => {
         const payload = JSON.stringify({
             message: 'This message is valid!'
         });
@@ -47,9 +46,16 @@ describe('gitlab webhook handler', () => {
             payload: payload
         };
 
-        testServer.inject(options, function(response) {
-            expect(response.statusCode).to.equal(200, 'server responded with non-200 response');
-            done();
-        });
+        const response = await testServer.inject(options);
+
+        expect(response.statusCode).to.equal(200, 'server responded with non-200 response');
     });
 });
+
+function sleep(time, callback) {
+    var stop = new Date().getTime();
+    while(new Date().getTime() < stop + time) {
+        ;
+    }
+    callback();
+}
