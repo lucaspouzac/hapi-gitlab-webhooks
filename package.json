@@ -1,6 +1,6 @@
 {
   "name": "hapi-gitlab-webhooks",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Hapi plugin for receiving requests from the GitLab webhooks API.",
   "keywords": [
     "hapi",
