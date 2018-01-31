@@ -8,6 +8,7 @@ Github version here: [node-github-webhook](https://github.com/mhazy/hapi-github-
 [![npm version][npm-image]][npm-url]
 [![Build Status][build-image]][build-url]
 [![Dependency Status][dependency-image]][dependency-url]
+[![Dev Dependency Status][dev-dependency-image]][dev-dependency-url]
 
 An authentication strategy plugin for [hapi](https://github.com/hapijs/hapi) for validating webhook requests from Gitlab. This strategy validates the payload with the signature sent with the request.
 
@@ -55,3 +56,5 @@ server.register(gitlabWebhooksPlugin, function (err) {
 [build-url]: https://travis-ci.org/lucaspouzac/hapi-gitlab-webhooks
 [dependency-image]: https://david-dm.org/lucaspouzac/hapi-gitlab-webhooks.svg
 [dependency-url]: https://david-dm.org/lucaspouzac/hapi-gitlab-webhooks
+[dev-dependency-image]: https://david-dm.org/lucaspouzac/hapi-gitlab-webhooks/dev-status.svg
+[dev-dependency-url]: https://david-dm.org/lucaspouzac/hapi-gitlab-webhooks?type=dev
